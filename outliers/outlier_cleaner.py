@@ -15,6 +15,17 @@ def outlierCleaner(predictions, ages, net_worths):
 
     ### your code goes here
 
-    
-    return cleaned_data
+    # print predictions
+    # print net_worths
 
+    # squares = [(ages[ii][0], net_worths[ii][0], ((predictions[ii] - net_worths[ii]) ** 2)[0]) for ii in range(0, len(predictions))]
+    # squares.sort(key=lambda tup: tup[2])
+    # squares = squares[0: int(len(squares) * 0.9)]
+    
+    # cleaned_data = squares
+
+    cleaned_data = [(ages[ii][0], net_worths[ii][0], ((predictions[ii] - net_worths[ii]) ** 2)[0]) for ii in range(0, len(predictions))]
+    cleaned_data.sort(key=lambda tup: tup[2])
+    cleaned_data = cleaned_data[0: int(len(cleaned_data) * 0.9)]
+
+    return cleaned_data
